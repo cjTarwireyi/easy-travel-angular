@@ -1,8 +1,10 @@
 import { Component } from "@angular/core";
+import { IAgency } from "./agency-list.interface";
 
 @Component({
     selector:'pm-agencies',
-    templateUrl:'./agency-list.component.html'
+    templateUrl:'./agency-list.component.html',
+    styleUrls:['./agency-list.component.css']
 })
 export class AgencyListComponent{
     pageTitle: string = 'Agency';
@@ -10,7 +12,7 @@ export class AgencyListComponent{
     imageWidth: number = 50;
     imageMargin: number = 2;
     showLogo: boolean = true;
-    agencies: any[] = [
+    agencies: IAgency[] = [
         {
             agencyId:1,
             agencyName:"Mukanya Coach",
@@ -18,7 +20,7 @@ export class AgencyListComponent{
             starRating:4.1,
             available:"Y",
             industry:"Pasenger Transport",
-            "logoUrl": "assets/agencyLogos/mk.jpeg"
+            logoUrl: "assets/agencyLogos/mk.jpeg"
         },
         {
             agencyId:1,
@@ -27,7 +29,7 @@ export class AgencyListComponent{
             starRating:4.5,
             available:"Y",
             industry:"Goods Transport",
-            "logoUrl": "assets/agencyLogos/sg.png"
+            logoUrl: "assets/agencyLogos/sg.png"
         },
         {
             agencyId:1,
@@ -36,7 +38,7 @@ export class AgencyListComponent{
             starRating:3,
             available:"Y",
             industry:"Mixed",
-            "logoUrl": "assets/agencyLogos/nz.png"
+            logoUrl: "assets/agencyLogos/nz.png"
         }
 
     ];    

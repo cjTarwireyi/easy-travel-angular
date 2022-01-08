@@ -68,9 +68,14 @@
           "configurations": {
             "production": {
               "browserTarget": "easy-travel-angular:build:production"
+            },
+            "development": {
+              "optimization": false,
+              "sourceMap": true,
+              "vendorChunk": true
             }
           }
-        },
+        },       
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
