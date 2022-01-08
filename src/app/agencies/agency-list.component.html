@@ -6,7 +6,7 @@
       <div class='row'>
         <div class='col-md-2'>Filter by:</div>
         <div class='col-md-4'>
-          <input type='text'/>
+          <input type='text' [(ngModel)]='listFilter'/>
         </div>
       </div>
       <div class='row'
@@ -20,9 +20,8 @@
           <thead>
             <tr>
               <th>
-                <button class='btn btn-primary'
-                      >
-                  {{showImage ? 'Hide' : 'Show'}} Image
+                <button class='btn btn-primary' (click)='toggleLogo()'>
+                  {{showLogo ? 'Hide' : 'Show'}} logo
                 </button>
               </th>
               <th>Agency</th>
@@ -35,12 +34,12 @@
           <tbody>
             <tr *ngFor='let agency of agencies'>
               <td>  
-                image              
+              <img *ngIf='showLogo' [src] ='agency.logoUrl'   [title]='agency.agencyName' [style.width.px]='imageWidth'[style.margin.px]='imageMargin' >  
               </td>
               <td>
                   {{ agency.agencyName }}
               </td>
-              <td>{{ agency.agencyCode }}</td>
+              <td>{{ agency.agencyCode | lowercase }}</td>
               <td>{{ agency.available }}</td>
               <td>{{ agency.industry}}</td>
               <td>
