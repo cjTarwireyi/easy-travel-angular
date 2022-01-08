@@ -16,7 +16,7 @@
         </div>
       </div>
       <div class='table-responsive'>
-        <table class='table' *ngIf="agencies" >
+        <table class='table' *ngIf="filteredAgencies" >
           <thead>
             <tr>
               <th>
@@ -32,14 +32,14 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor='let agency of agencies'>
+            <tr *ngFor='let agency of filteredAgencies'>
               <td>  
               <img *ngIf='showLogo' [src] ='agency.logoUrl'   [title]='agency.agencyName' [style.width.px]='imageWidth'[style.margin.px]='imageMargin' >  
               </td>
               <td>
                   {{ agency.agencyName }}
               </td>
-              <td>{{ agency.agencyCode | lowercase }}</td>
+              <td>{{ agency.agencyCode | lowercase | convertToSpaces:'-' }}</td>
               <td>{{ agency.available }}</td>
               <td>{{ agency.industry}}</td>
               <td>

@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { IAgency } from "./agency-list.interface";
 
 @Component({
@@ -6,17 +6,27 @@ import { IAgency } from "./agency-list.interface";
     templateUrl:'./agency-list.component.html',
     styleUrls:['./agency-list.component.css']
 })
-export class AgencyListComponent{
+export class AgencyListComponent implements OnInit{  
     pageTitle: string = 'Agency';
-    listFilter: string = 'Testing';
-    imageWidth: number = 50;
+    imageWidth: number = 20;
     imageMargin: number = 2;
     showLogo: boolean = true;
+
+    private _listFilter: string='';
+    get listFilter(): string {
+        return this._listFilter;
+    }
+    set listFilter(value:string){
+        this._listFilter = value;
+        console.log('in setter',value);
+        this.filteredAgencies = this.performFilter(value);
+    }
+    filteredAgencies: IAgency[] =[]
     agencies: IAgency[] = [
         {
             agencyId:1,
             agencyName:"Mukanya Coach",
-            agencyCode:"MC001",
+            agencyCode:"MC-001",
             starRating:4.1,
             available:"Y",
             industry:"Pasenger Transport",
@@ -25,7 +35,7 @@ export class AgencyListComponent{
         {
             agencyId:1,
             agencyName:"Shumba Goods Transport",
-            agencyCode:"SG001",
+            agencyCode:"SG-001",
             starRating:4.5,
             available:"Y",
             industry:"Goods Transport",
@@ -34,7 +44,7 @@ export class AgencyListComponent{
         {
             agencyId:1,
             agencyName:"Nzou Logistic",
-            agencyCode:"NZ001",
+            agencyCode:"NZ-001",
             starRating:3,
             available:"Y",
             industry:"Mixed",
@@ -43,7 +53,15 @@ export class AgencyListComponent{
 
     ];    
     errorMessage:  string = '';
+    performFilter(filterBy:string): IAgency[]{
+        filterBy.toLocaleLowerCase();
+        return this.agencies.filter((agency:IAgency)=>
+        agency.agencyName.toLocaleLowerCase().includes(filterBy));
+    }
    toggleLogo(): void{
        this.showLogo = !this.showLogo;
    }
+   ngOnInit(): void {
+        this.listFilter="";
+    }
 }
