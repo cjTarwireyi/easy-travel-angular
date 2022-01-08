@@ -28,6 +28,7 @@
             ],
             "scripts": []
           },
+          "defaultConfiguration": "production",
           "configurations": {
             "production": {
               "fileReplacements": [
@@ -57,8 +58,16 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
             }
-          }
+          }          
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -70,11 +79,10 @@
               "browserTarget": "easy-travel-angular:build:production"
             },
             "development": {
-              "optimization": false,
-              "sourceMap": true,
-              "vendorChunk": true
-            }
-          }
+              "browserTarget": "easy-travel-angular:build:development"
+             }   
+          },
+          "defaultConfiguration": "development"
         },       
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
