@@ -61,6 +61,9 @@ export class AgencyListComponent implements OnInit{
    toggleLogo(): void{
        this.showLogo = !this.showLogo;
    }
+   onRatingClicked(message: string):void{
+        console.log(message);
+   }
    ngOnInit(): void {
         this.listFilter="";
     }

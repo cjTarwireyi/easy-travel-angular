@@ -43,7 +43,7 @@
               <td>{{ agency.available }}</td>
               <td>{{ agency.industry}}</td>
               <td>
-               {{agency.starRating}} 
+              <pm-star [rating]='agency.starRating' (ratingClicked)='onRatingClicked($event)'></pm-star>
               </td>
             </tr>
           </tbody>
