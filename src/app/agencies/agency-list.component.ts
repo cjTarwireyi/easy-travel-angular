@@ -1,4 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Subscription } from "rxjs";
 import { IAgency } from "./agency-list.interface";
 import { AgencyService } from "./agency.service";
 
@@ -7,16 +8,16 @@ import { AgencyService } from "./agency.service";
     templateUrl:'./agency-list.component.html',
     styleUrls:['./agency-list.component.css']
 })
-export class AgencyListComponent implements OnInit{  
+export class AgencyListComponent implements OnInit,OnDestroy{  
     pageTitle: string = 'Agency';
     imageWidth: number = 20;
     imageMargin: number = 2;
     showLogo: boolean = true;
+    sub!: Subscription;
     private _agencyService;
     constructor(private agencyService: AgencyService){
         this._agencyService = agencyService
     }
-    
     private _listFilter: string='';
     get listFilter(): string {
         return this._listFilter;
@@ -40,9 +41,19 @@ export class AgencyListComponent implements OnInit{
    onRatingClicked(message: string):void{
         console.log(message);
    }
-   ngOnInit(): void {
-        this.listFilter="";
-        this.agencies = this._agencyService.getAgencies();
-        this.filteredAgencies = this.agencies;
-    }   
+   ngOnInit(): void {      
+    this.sub = this._agencyService.getAgencies().subscribe({
+            next: agencies => {
+                this.agencies = agencies;
+                this.filteredAgencies = this.agencies;
+            },
+            error: err => this.errorMessage = err
+        });
+       
+    }
+    
+    ngOnDestroy(): void {
+        this.sub.unsubscribe();
+    }
+       
 }
