@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import { AgencyListComponent } from './agencies/agency-list.component';
 import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
 import { StarComponent } from './shared/star.component';
+import { AgencyDetailComponent } from './agencies/agency-detail.component';
+import { HomeComponent } from './home/home.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -15,12 +18,21 @@ import { StarComponent } from './shared/star.component';
     AppComponent,
     AgencyListComponent,
     ConvertToSpacesPipe,
-    StarComponent
+    StarComponent,
+    AgencyDetailComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot([
+      { path: 'agencies', component: AgencyListComponent},
+      { path: 'agencies/:id', component: AgencyDetailComponent},
+      { path: 'home', component: HomeComponent},
+      { path: '', redirectTo: 'home', pathMatch:'full'},
+      { path: '**', redirectTo: 'home', pathMatch:'full'}
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
