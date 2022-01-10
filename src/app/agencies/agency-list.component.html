@@ -35,7 +35,9 @@
               <img *ngIf='showLogo' [src] ='agency.logoUrl'   [title]='agency.agencyName' [style.width.px]='imageWidth'[style.margin.px]='imageMargin' >  
               </td>
               <td>
-                  {{ agency.agencyName }}
+                 <a [routerLink]="['/agencies', agency.agencyId]" routerLinkActive="router-link-active"  >
+                 {{ agency.agencyName }}
+              </a>
               </td>
               <td>{{ agency.agencyCode | lowercase | convertToSpaces:'-' }}</td>
               <td>{{ agency.available }}</td>
