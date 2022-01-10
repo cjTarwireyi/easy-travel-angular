@@ -11,6 +11,7 @@ import { AgencyDetailComponent } from './agencies/agency-detail.component';
 import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
 import { AgencyDetailGuard } from './agencies/agency-detail.guard';
+import { jqxBarGaugeModule } from 'jqwidgets-ng/jqxbargauge';
 
 
 
@@ -27,6 +28,7 @@ import { AgencyDetailGuard } from './agencies/agency-detail.guard';
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    jqxBarGaugeModule,
     RouterModule.forRoot([
       { path: 'agencies', component: AgencyListComponent},
       { path: 'agencies/:id', component: AgencyDetailComponent, canActivate:[AgencyDetailGuard]},
