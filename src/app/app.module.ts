@@ -10,6 +10,7 @@ import { StarComponent } from './shared/star.component';
 import { AgencyDetailComponent } from './agencies/agency-detail.component';
 import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
+import { AgencyDetailGuard } from './agencies/agency-detail.guard';
 
 
 
@@ -28,7 +29,7 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     RouterModule.forRoot([
       { path: 'agencies', component: AgencyListComponent},
-      { path: 'agencies/:id', component: AgencyDetailComponent},
+      { path: 'agencies/:id', component: AgencyDetailComponent, canActivate:[AgencyDetailGuard]},
       { path: 'home', component: HomeComponent},
       { path: '', redirectTo: 'home', pathMatch:'full'},
       { path: '**', redirectTo: 'home', pathMatch:'full'}
