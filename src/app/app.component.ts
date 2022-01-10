@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { jqxBarGaugeModule }  from 'jqwidgets-ng/jqxbargauge';  
 
 @Component({
   selector:'pm-root',
