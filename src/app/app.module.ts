@@ -7,7 +7,8 @@ import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
 import { jqxBarGaugeModule } from 'jqwidgets-ng/jqxbargauge';
 import { AgencyModule } from './agencies/agency.module';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @NgModule({
@@ -24,7 +25,9 @@ import { AgencyModule } from './agencies/agency.module';
       { path: '', redirectTo: 'home', pathMatch:'full'},
       { path: '**', redirectTo: 'home', pathMatch:'full'}
     ]),
-    AgencyModule
+    AgencyModule,
+    BrowserAnimationsModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
