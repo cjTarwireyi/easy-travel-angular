@@ -4,6 +4,9 @@ import { AgencyDetailComponent } from './agency-detail.component';
 import { RouterModule } from '@angular/router';
 import { AgencyDetailGuard } from './agency-detail.guard';
 import { SharedModule } from '../shared/shared.module';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,10 @@ import { SharedModule } from '../shared/shared.module';
       { path: 'agencies', component: AgencyListComponent},
       { path: 'agencies/:id', component: AgencyDetailComponent, canActivate:[AgencyDetailGuard]},
     ]),
-    SharedModule
+    SharedModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule 
   ]
 })
 export class AgencyModule { }
