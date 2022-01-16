@@ -9,16 +9,23 @@ import { HomeComponent } from './home.component';
 import { jqxBarGaugeModule } from 'jqwidgets-ng/jqxbargauge';
 import { RouterModule, Routes } from '@angular/router';
 import { AgencyModule } from '../agencies/agency.module';
-
+import { AgencyListComponent } from '../agencies/agency-list.component';
+import { AgencyDetailComponent } from '../agencies/agency-detail.component';
+import { AgencyDetailGuard } from '../agencies/agency-detail.guard';
 
 const routes: Routes =[
   { path:'', component: HomeComponent,
 children:[
-    { path:'', component: MainContentComponent}
-]},
-  { path: '**', redirectTo:''}
-]
+   
+      { path: 'agencies', component: AgencyListComponent},
+      { path: 'agencies/:id', component: AgencyDetailComponent, canActivate:[AgencyDetailGuard]},
+    { path: '', redirectTo: 'home', pathMatch:'full'},
+    { path: '**', redirectTo: 'home', pathMatch:'full'}
+    ]},
 
+    { path: '', redirectTo: 'home', pathMatch:'full'},
+    { path: '**', redirectTo: 'home', pathMatch:'full'}
+];
 @NgModule({
   declarations: [
     HomeComponent,
@@ -31,7 +38,7 @@ children:[
     jqxBarGaugeModule,
      SharedModule,
      AgencyModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forChild(routes),
   ]
 })
 export class HomeModule { }
