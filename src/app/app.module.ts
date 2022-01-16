@@ -6,27 +6,28 @@ import {MatButtonModule} from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { AgencyModule } from './agencies/agency.module';
 import { HomeModule } from './home/home.module';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent 
+    AppComponent ,
+    
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,   
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    HomeModule,
     RouterModule.forRoot([      
       { path: 'home', component: HomeComponent},
       { path: '', redirectTo: 'home', pathMatch:'full'},
       { path: '**', redirectTo: 'home', pathMatch:'full'}
-    ]),    
-    BrowserAnimationsModule,
-    MatButtonModule,
-    HomeModule
+    ]), 
   ],
+
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,5 +1,7 @@
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
+import { Router } from '@angular/router';
 
 const SMALL_WIDTH_BREAKPOINT=720;
 @Component({
@@ -9,7 +11,9 @@ const SMALL_WIDTH_BREAKPOINT=720;
 })
 export class SidenavComponent implements OnInit {
 
-  constructor(private breakpointObserver: BreakpointObserver) { }
+  constructor(private breakpointObserver: BreakpointObserver, private router :Router) { }
+
+  @ViewChild(MatSidenav) sidenav: MatSidenav;
   showFiller = false;
   smallScreen = false;
   ngOnInit(): void {
@@ -17,6 +21,10 @@ export class SidenavComponent implements OnInit {
     .subscribe((state: BreakpointState) =>{
       this.smallScreen= state.matches
     })
+    this.router.events.subscribe(() => {
+      if(this.smallScreen){
+          this.sidenav.close();
+      }
+    })
   }
-
 }

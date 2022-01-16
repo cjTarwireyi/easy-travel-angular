@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 
 
 @Component({
+  selector:'pm-home',
   templateUrl: './home.component.html'
 })
 export class HomeComponent {
