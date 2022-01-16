@@ -1,5 +1,4 @@
-import { Component } from "@angular/core";
-import { jqxBarGaugeModule }  from 'jqwidgets-ng/jqxbargauge';  
+import { Component } from "@angular/core"; 
 
 @Component({
   selector:'pm-root',
@@ -8,4 +7,5 @@ import { jqxBarGaugeModule }  from 'jqwidgets-ng/jqxbargauge';
 })
 export class AppComponent {
   pageTitle: string = "Easy Travel";
+  showDefaultCard: boolean = false
 }

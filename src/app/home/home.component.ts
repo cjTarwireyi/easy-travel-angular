@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { IAgency } from '../agencies/agency-list.interface';
-import { AgencyService } from '../agencies/agency.service';
+
 
 @Component({
   templateUrl: './home.component.html'
@@ -9,6 +8,7 @@ import { AgencyService } from '../agencies/agency.service';
 export class HomeComponent {
   public pageTitle = 'Welcome to Home Page';  
   sub!: Subscription;
+  showDefaultCard: boolean =false;
   tooltip: any =
     {
         visible: true,

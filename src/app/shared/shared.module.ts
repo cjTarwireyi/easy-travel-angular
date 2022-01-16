@@ -3,6 +3,15 @@ import { CommonModule } from '@angular/common';
 import { StarComponent } from './star.component';
 import { FormsModule } from '@angular/forms';
 import { ConvertToSpacesPipe } from './convert-to-spaces.pipe';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatListModule} from '@angular/material/list';
+import {MatIconModule} from '@angular/material/icon';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -16,7 +25,16 @@ import { ConvertToSpacesPipe } from './convert-to-spaces.pipe';
     StarComponent,
     ConvertToSpacesPipe,
     CommonModule,
-    FormsModule
+    FormsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule ,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule,
+    MatIconModule,
+    MatCardModule,
+    MatButtonModule
   ]
 })
 export class SharedModule { }
