@@ -8,7 +8,13 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class ToolbarComponent implements OnInit {
   @Output() toggleSidenav = new EventEmitter<void>();
   constructor() { }
-
+  loggedIn = false
+  onLogin(): void {
+    this.loggedIn = true
+  }
+  onLogout(): void {
+    this.loggedIn = false;
+  }
   ngOnInit(): void {
   }
 

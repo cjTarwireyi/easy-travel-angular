@@ -53,6 +53,11 @@ export class AgencyListComponent implements OnInit,OnDestroy, AfterViewInit {
    onRatingClicked(message: string):void{
         console.log(message);
    }
+
+   applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
    ngOnInit(): void {      
     this.sub = this._agencyService.getAgencies().subscribe({
             next: agencies => {
