@@ -1,5 +1,37 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="warn">
+   <mat-toolbar-row>
  <button mat-button class="sidenav-toggle" (click)="toggleSidenav.emit()"> 
     <mat-icon>menu</mat-icon>
  </button>
+ <button mat-button [matMenuTriggerFor]="aboveMenu">Agencies</button>
+ <mat-menu #aboveMenu="matMenu" yPosition="above">
+   <button mat-menu-item routerLink='/agencies' >All</button>
+   <button mat-menu-item routerLink='/agencies'>Air Travel</button>
+   <button mat-menu-item routerLink=''>Road Travel</button>
+   <button mat-menu-item routerLink=''>Sea Travel</button>
+ </mat-menu>
+ 
+ <button mat-button [matMenuTriggerFor]="belowMenu">Accommodation</button>
+ <mat-menu #belowMenu="matMenu" yPosition="below">
+   <button mat-menu-item routerLink=''>Hotels</button>
+   <button mat-menu-item routerLink=''>BnBs</button>
+   <button mat-menu-item routerLink=''>Guest Hous</button>
+ </mat-menu>
+ 
+ <button mat-button [matMenuTriggerFor]="beforeMenu">Activities</button>
+ <mat-menu #beforeMenu="matMenu" xPosition="before">
+   <button mat-menu-item routerLink=''>Outdoor</button>
+   <button mat-menu-item routerLink=''>Indoor</button>
+ </mat-menu>
+ 
+ 
+ <button mat-button routerLink=''>Promotions</button>
+ <span class="example-spacer"></span>
+ <button *ngIf="!loggedIn"  (click)='onLogin()' mat-icon-button class="example-icon">
+   <mat-icon matTooltip="login" matTooltipPosition="below">login</mat-icon>
+ </button>
+ <button *ngIf="loggedIn"  (click)='onLogout()' mat-icon-button class="example-icon">
+   <mat-icon matTooltip="logout" matTooltipPosition="below">logout</mat-icon>
+ </button>
+</mat-toolbar-row>
  </mat-toolbar>
