@@ -1,18 +1,13 @@
 import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { MainContentComponent } from './components/main-content/main-content.component';
-import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { HomeComponent } from './home.component';
 import { jqxBarGaugeModule } from 'jqwidgets-ng/jqxbargauge';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
+
 import { AgencyModule } from '../agencies/agency.module';
 import { AgencyListComponent } from '../agencies/agency-list.component';
 import { AgencyDetailComponent } from '../agencies/agency-detail.component';
 import { AgencyDetailGuard } from '../agencies/agency-detail.guard';
-import {MatMenuModule} from '@angular/material/menu';
 
 const routes: Routes =[
   { path:'', component: HomeComponent,
@@ -30,17 +25,15 @@ children:[
 @NgModule({
   declarations: [
     HomeComponent,
-    ToolbarComponent,
-    MainContentComponent,
-    SidenavComponent
+ 
+    
   ],
   imports: [
-    MatMenuModule,
-    CommonModule,
+  
     jqxBarGaugeModule,
      SharedModule,
      AgencyModule,
-    RouterModule.forChild(routes),
+ 
   ]
 })
 export class HomeModule { }
