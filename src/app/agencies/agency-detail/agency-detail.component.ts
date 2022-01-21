@@ -1,4 +1,4 @@
-import { IAgency } from './agency-list.interface';
+import { IAgency } from '../agency-list.interface';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 

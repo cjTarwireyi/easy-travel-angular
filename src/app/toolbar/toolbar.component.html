@@ -3,6 +3,7 @@
  <button mat-button class="sidenav-toggle" (click)="toggleSidenav.emit()"> 
     <mat-icon>menu</mat-icon>
  </button>
+ <button mat-button routerLink='/home'>Home</button>
  <button mat-button [matMenuTriggerFor]="aboveMenu">Agencies</button>
  <mat-menu #aboveMenu="matMenu" yPosition="above">
    <button mat-menu-item routerLink='/agencies' >All</button>
