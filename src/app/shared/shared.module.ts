@@ -15,6 +15,10 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,7 @@ import { MatInputModule } from '@angular/material/input';
     ConvertToSpacesPipe, 
   ],
   imports: [
-    CommonModule,   
+   
   ],
   exports:[
     StarComponent,
@@ -40,7 +44,13 @@ import { MatInputModule } from '@angular/material/input';
     MatButtonModule,
     MatTooltipModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatMenuModule,
+    BrowserModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    CommonModule, 
   ]
 })
 export class SharedModule { }
