@@ -1,35 +1,51 @@
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse,HttpHeaders  } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable, throwError } from "rxjs";
-import {catchError, tap} from "rxjs/operators"
+import { Observable, of, throwError } from "rxjs";
+import {catchError, tap,map} from "rxjs/operators"
 import { IAgency } from "./agency-list.interface";
 
 @Injectable({
     providedIn:'root'
 })
 export class AgencyService{
-    private agencyUrl ='api/agencies/agencies.json'
+    private agencyUrl ='api/agencies'
+    httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
     constructor(private http: HttpClient){
         
     }
+    update(agent: IAgency): Observable<any> {
+      return this.http.put(this.agencyUrl, agent, this.httpOptions).pipe(
+        tap(_ => console.log(`updated agency id=${agent.id}`)),
+        map(() => agent),
+        catchError(this.handleError<any>('update'))
+      );
+    }
+
     getAgencies(): Observable<IAgency[]>{
         return this.http.get<IAgency[]>(this.agencyUrl).pipe( tap( data => console.log('All', JSON.stringify(data))),
-        catchError(this.handleError))
+        
+        catchError(this.handleError<any>('updateHero')))
     }
-    private handleError(err: HttpErrorResponse): Observable<never> {
-        // in a real world app, we may send the server to some remote logging infrastructure
-        // instead of just logging it to the console
-        let errorMessage = '';
-        if (err.error instanceof ErrorEvent) {
-          // A client-side or network error occurred. Handle it accordingly.
-          errorMessage = `An error occurred: ${err.error.message}`;
-        } else {
-          // The backend returned an unsuccessful response code.
-          // The response body may contain clues as to what went wrong,
-          errorMessage = `Server returned code: ${err.status}, error message is: ${err.message}`;
-        }
-        console.error(errorMessage);
-        return throwError(errorMessage);
-      }
+    getAgency(id: number): Observable<IAgency | undefined> {
+      return this.getAgencies()
+        .pipe(
+          map((agencies: IAgency[]) =>{
+            console.log(agencies);
+            return agencies.find(p => p.id === id)
+          } )
+        );
+    }
+    private handleError<T>(operation = 'operation', result?: T) {
+      return (error: any): Observable<T> => {
+    
+        // TODO: send the error to remote logging infrastructure
+        console.error(error); // log to console instead  
+    
+        // Let the app keep running by returning an empty result.
+        return of(result as T);
+      };
+    }
 
 }

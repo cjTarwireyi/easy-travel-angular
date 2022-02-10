@@ -36,7 +36,7 @@ export class AgencyListComponent implements OnInit,OnDestroy, AfterViewInit {
         this._listFilter = value;        
         this.dataSource.data = this.performFilter(value);
     }
-    displayedColumns:string[] = ['agencyName', 'agencyCode', 'available', 'industry','starRating']
+    displayedColumns:string[] = ['agencyName', 'agencyCode', 'available', 'industry','starRating','edit']
     dataSource = new MatTableDataSource<IAgency>();
     
     filteredAgencies: IAgency[] =[]
