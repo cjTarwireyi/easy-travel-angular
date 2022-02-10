@@ -1,9 +1,9 @@
 export interface IAgency{
-    agencyId:number,
+    id:number,
     agencyName:string,
     agencyCode:string,
     starRating:number,
-    available:string,
+    available:boolean,
     industry:string,
     "logoUrl": string
 }

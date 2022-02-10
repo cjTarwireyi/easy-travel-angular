@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
 
 import { AppComponent } from './app.component';
 import { HomeModule } from './home/home.module';
@@ -22,7 +24,11 @@ import { AppRoutingModule } from './app-routing.module';
     AgencyModule,   
     AppRoutingModule, 
     SharedModule,
-    HomeModule
+    HomeModule,
+    
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false }
+    )
   ],
 
   providers: [],

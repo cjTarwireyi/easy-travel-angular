@@ -1,0 +1,43 @@
+<div div class ='card'>
+  <div class ='card-header'>
+    {{pageTitle}}
+    <a class="float-right" [routerLink]="['/agencies',0,'edit']"> <mat-icon matTooltip="add" matTooltipPosition="below" >
+      add_box
+    </mat-icon> </a>
+</div>
+  <form class="example-form" *ngIf="agency">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Agency Name</mat-label>
+      <input name="agencyName" matInput [(ngModel)]="agency.agencyName">
+    </mat-form-field>
+  
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Agency Code</mat-label>
+      <input name="agencyCode" matInput [(ngModel)]="agency.agencyCode">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Rating</mat-label>
+      <input type="number" name="rating" matInput [(ngModel)]="agency.starRating">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Industry</mat-label>
+      <input  name="industry" matInput [(ngModel)]="agency.industry">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Logo</mat-label>
+      <input name="logo" matInput [(ngModel)]="agency.logoUrl">
+    </mat-form-field>
+
+      <mat-checkbox name="available" [checked]="agency.available" [(ngModel)]="agency.available" class="example-margin" (change)="availableValueChange($event)">Available</mat-checkbox>
+<div class="example-button-row">
+  <button class="margin-10" mat-raised-button color="primary"(click)='onSave()'>Save</button>
+  <button class="margin-10" mat-stroked-button color="primary" (click)='onCancel()'>Cancel</button>
+  <button class="margin-10" mat-stroked-button color="warn">Delete</button>
+</div>
+     
+  </form>
+</div>
+
