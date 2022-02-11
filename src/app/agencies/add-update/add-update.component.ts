@@ -43,11 +43,20 @@ export class AddUpdateComponent implements OnInit {
 }
   onSave(){
     if (this.agency) {
-      this.agencyService.update(this.agency)
+      if(this.agency.id > 0){
+        this.agencyService.update(this.agency)
         .subscribe(() => this.onCancel());
+      }else{
+        this.agencyService.add(this.agency)
+        .subscribe(() => this.onCancel());
+      }
+    
     }
   }
-
+onDelete(){
+  if(this.agency)
+  this.agencyService.deleteHero(this.agency.id).subscribe(() => this.onCancel())
+}
   onCancel(): void{
     this.router.navigate(['/agencies'])
   }

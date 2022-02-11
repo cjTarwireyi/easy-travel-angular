@@ -15,6 +15,14 @@ export class AgencyService{
     constructor(private http: HttpClient){
         
     }
+
+    add(agency: IAgency): Observable<IAgency> {
+      return this.http.post<IAgency>(this.agencyUrl, agency, this.httpOptions).pipe(
+        tap((newAgency: IAgency) => console.log(`added Agency w/ id=${newAgency.id}`)),
+        catchError(this.handleError<IAgency>('addAgency'))
+      );
+    }
+
     update(agent: IAgency): Observable<any> {
       return this.http.put(this.agencyUrl, agent, this.httpOptions).pipe(
         tap(_ => console.log(`updated agency id=${agent.id}`)),
@@ -37,6 +45,16 @@ export class AgencyService{
           } )
         );
     }
+
+    deleteHero(id: number): Observable<IAgency> {
+      const url = `${this.agencyUrl}/${id}`;
+    
+      return this.http.delete<IAgency>(url, this.httpOptions).pipe(
+        tap(_ => console.log(`deleted agency id=${id}`)),
+        catchError(this.handleError<IAgency>('deleteHero'))
+      );
+    }
+
     private handleError<T>(operation = 'operation', result?: T) {
       return (error: any): Observable<T> => {
     
