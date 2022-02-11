@@ -1,2 +1,15 @@
-Welcome home
+<div class='row'>
+<!-- Cards with media area -->
 
+<mat-card class="example-card" *ngFor="let agent of agencies; let myIndex = index">
+  <a [routerLink]="['/agencies',agent.id]">    
+  <mat-card-title-group>
+    <mat-card-title class="text-color-black">{{agent.agencyName}}</mat-card-title>  
+    <img mat-card-sm-image src={{agent.logoUrl}}>
+  </mat-card-title-group>
+  <mat-card-content class="text-color-black">
+    {{longText}}
+  </mat-card-content>
+</a>
+</mat-card>
+</div>
