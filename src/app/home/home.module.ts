@@ -4,6 +4,7 @@ import { HomeComponent } from './home.component';
 import { jqxBarGaugeModule } from 'jqwidgets-ng/jqxbargauge';
 
 import { AgencyModule } from '../agencies/agency.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,8 @@ import { AgencyModule } from '../agencies/agency.module';
     jqxBarGaugeModule,
      SharedModule,
      AgencyModule,
+     RouterModule.forChild([      
+      ])
   ]
 })
 export class HomeModule { }
