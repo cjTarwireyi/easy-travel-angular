@@ -7,3 +7,8 @@ export interface IAgency{
     industry:string,
     "logoUrl": string
 }
+
+export interface IAgencyResolved{
+    agency?: IAgency,
+    error?:any
+}
