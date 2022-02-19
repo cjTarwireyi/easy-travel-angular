@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IAgency } from '../agency-list.interface';
+import { IAgency, IAgencyResolved } from '../agency-list.interface';
 import { AgencyService } from '../agency.service';
 
 @Component({
@@ -16,25 +16,22 @@ export class AddUpdateComponent implements OnInit {
   constructor(private agencyService: AgencyService, private route:ActivatedRoute,private router:Router) { }
 
   ngOnInit(): void {
-
-    this.route.paramMap.subscribe(
-      params =>{
-        const id = +(params.get('id') ?? 0);
-        this.pageTitle = id === 0 ? "Add Agency" : "Update Agency";
-        if(id > 0){
-          this.getAgency(id);
-          return;
-        } 
-        console.log("logging")    
+  
+    this.route.data.subscribe( data => {
+      const resolvedData: IAgencyResolved = data['resolvedData'];
+      this.errorMessage = resolvedData.error;
+      if(resolvedData.agency){
+        this.pageTitle =  "Update Agency";
+        this.agency = resolvedData.agency;
+      }else{
         this.agency = <IAgency> {}; 
+        this.pageTitle ="Add Agency";
       }
-    );
+     
+    }) 
   }
-  getAgency(id:number){
-    this.agencyService.getAgency(id).subscribe({
-      next: agency => this.agency = agency,
-      error: err => this.errorMessage = err
-    })
+  resolveAgency(){
+  
   }
 
   availableValueChange($event: { checked: boolean; }) {
