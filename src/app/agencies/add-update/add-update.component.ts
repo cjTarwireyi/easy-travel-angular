@@ -34,10 +34,7 @@ export class AddUpdateComponent implements OnInit {
   
   }
 
-  availableValueChange($event: { checked: boolean; }) {
-    if(this.agency)
-    this.agency.available= $event.checked;
-}
+
   onSave(){
     if (this.agency) {
       if(this.agency.id > 0){

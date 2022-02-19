@@ -22,3 +22,35 @@
   .margin-10{
     margin: 10px;
   }
+  .fa-exclamation {
+    color: red;
+  }
+  
+  .wizard a {
+      background: #efefef;
+      display: inline-block;
+      margin-right: 5px;
+      min-width: 150px;
+      outline: none;
+      padding: 10px 40px 10px;
+      position: relative;
+      text-decoration: none;
+  }
+  
+  .wizard a:hover {
+      cursor: pointer;
+      text-decoration: underline;
+  }
+  
+      /* Adds the cut out on the left side of the tab */
+  .wizard a:before {
+      width: 0;
+      height: 0;
+      border-top: 20px inset transparent;
+      border-bottom: 24px inset transparent;
+      border-left: 20px solid #fff;
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+  }

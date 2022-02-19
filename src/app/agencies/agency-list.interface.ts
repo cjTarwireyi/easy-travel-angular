@@ -5,7 +5,9 @@ export interface IAgency{
     starRating:number,
     available:boolean,
     industry:string,
-    "logoUrl": string
+    logoUrl: string,
+    category:string,
+    tags:string[]
 }
 
 export interface IAgencyResolved{
