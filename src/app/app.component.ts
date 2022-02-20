@@ -1,5 +1,7 @@
 import { Component } from "@angular/core"; 
 
+
+
 @Component({
   selector:'pm-root',
   templateUrl: './app.component.html',
@@ -7,5 +9,5 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   pageTitle: string = "Easy Travel";
-  showDefaultCard: boolean = false
+  showDefaultCard: boolean = false;
 }

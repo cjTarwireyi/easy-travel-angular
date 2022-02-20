@@ -32,7 +32,7 @@ import { AgencyEditTagsComponent } from './add-update/agency-edit-tags.component
           { path:'', redirectTo:'info',  pathMatch: 'full'},        
           { path: 'info', component: AgencyEditInfoComponent},
           { path: 'tags', component: AgencyEditTagsComponent}
-        ]},
+        ],},
       ]
         
       },
