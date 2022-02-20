@@ -15,7 +15,7 @@ import { PageNotFoundComponent } from './page-not-found.component';
         { path: 'home', component: HomeComponent},     
         { path: '', redirectTo: 'home', pathMatch:'full'},
         { path: '**', component:PageNotFoundComponent}
-      ],{useHash: true}),
+      ],{useHash: true,enableTracing:false}),
    
   ],
   exports:[RouterModule]

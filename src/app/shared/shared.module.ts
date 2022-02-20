@@ -23,12 +23,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     StarComponent,
-    ConvertToSpacesPipe, 
+    ConvertToSpacesPipe
+     
   ],
   imports: [
    
   ],
-  exports:[
+  exports:[   
     StarComponent,
     ConvertToSpacesPipe,
     CommonModule,
@@ -50,7 +51,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    CommonModule, 
+    CommonModule
   ]
 })
 export class SharedModule { }

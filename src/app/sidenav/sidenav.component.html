@@ -1,4 +1,5 @@
-  <mat-sidenav-container class="app-sidenav-container" dir="ltr">
+<span class="fa fa-spinner spinner" *ngIf="loading"></span>
+<mat-sidenav-container class="app-sidenav-container" dir="ltr">
     <mat-sidenav #sideNav [opened] ="!smallScreen" [mode]="smallScreen ? 'over' :'side'" class="app-sidenav mat-elevation-z1">
     <mat-toolbar color="warn" class="app-sidenav-tool-bar">
      Easy Travel
@@ -9,10 +10,9 @@
  <div class="app-sidenav-content">
   <pm-toolbar (toggleSidenav)="sideNav.toggle()" class="app-toolbar"> </pm-toolbar>
 
-  <div class="wrapper">
-    <router-outlet></router-outlet> 
+  <div class="wrapper" [@slideInAnimation]="o.isActivated? o.activatedRoute : ''">
+    <router-outlet #o="outlet"></router-outlet> 
   </div>
-  
 </div>
   </mat-sidenav-container>
   
