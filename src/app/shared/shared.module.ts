@@ -17,7 +17,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -46,10 +45,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatTooltipModule,
     MatFormFieldModule,
     MatInputModule,
-    MatMenuModule,
-    BrowserModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
+    MatMenuModule,  
     MatButtonModule,
     CommonModule
   ]

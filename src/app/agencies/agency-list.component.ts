@@ -8,7 +8,6 @@ import { IAgency } from "./agency-list.interface";
 import { AgencyService } from "./agency.service";
 
 @Component({
-    selector:'pm-agencies',
     templateUrl:'./agency-list.component.html',
     styleUrls:['./agency-list.component.css']
 })
