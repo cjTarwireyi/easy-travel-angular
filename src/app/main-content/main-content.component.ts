@@ -4,8 +4,7 @@ import { slideInAnimation } from '../app.animations';
 @Component({
   selector: 'pm-main-content',
   templateUrl: './main-content.component.html',
-  styleUrls: ['./main-content.component.scss'],
-  animations:[slideInAnimation]
+  styleUrls: ['./main-content.component.scss']
 })
 export class MainContentComponent implements OnInit {
 

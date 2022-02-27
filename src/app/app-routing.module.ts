@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found.component';
 import { SelectiveStrategy } from './selective-strategy.service';
+import { AuthGuard } from './user/auth.guard';
 
 
 
@@ -16,6 +17,7 @@ import { SelectiveStrategy } from './selective-strategy.service';
         { path: 'home', component: HomeComponent},   
         {
           path: 'agencies',
+          canActivate: [AuthGuard],
           data:{ preload: true},
           loadChildren: () =>  
           import('./agencies/agency.module').then(m => m.AgencyModule)

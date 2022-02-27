@@ -12,6 +12,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UserModule } from './user/user.module';
+import { MessageModule } from './messages/message.module';
 
 
 
@@ -23,9 +25,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MainContentComponent, 
   ],
   imports: [     
+    UserModule,
     AppRoutingModule, 
     SharedModule,
     HomeModule,
+    MessageModule,
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
