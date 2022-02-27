@@ -22,9 +22,7 @@ import { AgencyEditTagsComponent } from './add-update/agency-edit-tags.component
   imports: [    
     MatCheckboxModule,    
     SharedModule ,
-    RouterModule.forChild([
-      { path: 'agencies',
-      children:[
+    RouterModule.forChild([     
         { path: '', component: AgencyListComponent},
         { path: ':id', component: AgencyDetailComponent, resolve: {resolvedData: AgencyResolver}},
         { path: ':id/edit', component: AddUpdateComponent, resolve: {resolvedData: AgencyResolver},
@@ -33,11 +31,6 @@ import { AgencyEditTagsComponent } from './add-update/agency-edit-tags.component
           { path: 'info', component: AgencyEditInfoComponent},
           { path: 'tags', component: AgencyEditTagsComponent}
         ],},
-      ]
-        
-      },
-      
-    
     ])
   ]
 })
