@@ -23,15 +23,14 @@
  <mat-menu #beforeMenu="matMenu" xPosition="before">
    <button mat-menu-item routerLink='' routerLinkActive="active">Outdoor</button>
    <button mat-menu-item routerLink='' routerLinkActive="active">Indoor</button>
- </mat-menu>
- 
+ </mat-menu> 
  
  <button mat-button routerLink='/home'>Promotions</button>
  <span class="example-spacer"></span>
- <button *ngIf="!loggedIn"  (click)='onLogin()' mat-icon-button class="example-icon">
-   <mat-icon matTooltip="login" matTooltipPosition="below">login</mat-icon>
+ <button *ngIf="!isLoggedIn && !hideloginButton" (click)='onLogin()' mat-icon-button class="example-icon">
+   <mat-icon matTooltip="login" routerLink='/login' matTooltipPosition="below">login</mat-icon>
  </button>
- <button *ngIf="loggedIn"  (click)='onLogout()' mat-icon-button class="example-icon">
+ <button *ngIf="isLoggedIn" (click)='onLogout()' mat-icon-button class="example-icon">
    <mat-icon matTooltip="logout" matTooltipPosition="below">logout</mat-icon>
  </button>
 </mat-toolbar-row>
