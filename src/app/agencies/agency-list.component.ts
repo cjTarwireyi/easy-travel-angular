@@ -3,6 +3,7 @@ import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from "@angular
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort} from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
+import { Store } from "@ngrx/store";
 import { Subscription } from "rxjs";
 import { IAgency } from "./agency-list.interface";
 import { AgencyService } from "./agency.service";
@@ -17,8 +18,9 @@ export class AgencyListComponent implements OnInit,OnDestroy, AfterViewInit {
     imageMargin: number = 2;
     showLogo: boolean = true;
     sub!: Subscription;
+    showCopyRightsInfo: boolean;
     private _agencyService;
-    constructor(private agencyService: AgencyService, private _liveAnnouncer: LiveAnnouncer){
+    constructor(private agencyService: AgencyService, private store: Store<any>){
         this._agencyService = agencyService
     }
     @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -57,6 +59,12 @@ export class AgencyListComponent implements OnInit,OnDestroy, AfterViewInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
+  onShowAuthor(): void {
+this.store.dispatch(
+    {type:'[Agency] Toggle App Author'}
+);
+  }
    ngOnInit(): void {      
     this.sub = this._agencyService.getAgencies().subscribe({
             next: agencies => {
@@ -66,6 +74,14 @@ export class AgencyListComponent implements OnInit,OnDestroy, AfterViewInit {
             },
             error: err => this.errorMessage = err
         });
+
+        this.store.select('agencies').subscribe(
+            agencies=>{
+                if(agencies){
+                    this.showCopyRightsInfo = agencies.showCopyRightsInfo
+                }
+            }
+        )
        
     }
     
