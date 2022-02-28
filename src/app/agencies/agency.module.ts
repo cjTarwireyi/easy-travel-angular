@@ -9,6 +9,8 @@ import { AddUpdateComponent } from './add-update/add-update.component';
 import { AgencyResolver } from './agency-resolver.service';
 import { AgencyEditInfoComponent } from './add-update/agency-edit-info.component';
 import { AgencyEditTagsComponent } from './add-update/agency-edit-tags.component';
+import { StoreModule } from '@ngrx/store';
+import { agencyReducer } from './state/agency.reducer';
 
 
 @NgModule({
@@ -22,6 +24,7 @@ import { AgencyEditTagsComponent } from './add-update/agency-edit-tags.component
   imports: [    
     MatCheckboxModule,    
     SharedModule ,
+    StoreModule.forFeature("agencies",agencyReducer),
     RouterModule.forChild([     
         { path: '', component: AgencyListComponent},
         { path: ':id', component: AgencyDetailComponent, resolve: {resolvedData: AgencyResolver}},

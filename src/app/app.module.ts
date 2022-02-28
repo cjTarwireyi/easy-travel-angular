@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserModule } from './user/user.module';
 import { MessageModule } from './messages/message.module';
+import { StoreModule } from '@ngrx/store';
 
 
 
@@ -37,7 +38,8 @@ import { MessageModule } from './messages/message.module';
 
       InMemoryDataService, 
       { dataEncapsulation: false, delay:1000}
-    )
+    ),
+    StoreModule.forRoot({}, {})
   ],
 
   providers: [],

@@ -71,6 +71,8 @@
                  aria-label="Select page of periodic elements">
   </mat-paginator>
       </div>
+      <mat-checkbox name="available" [checked]="showCopyRightsInfo" [(ngModel)]="showCopyRightsInfo" class="example-margin" (change)="onShowAuthor()">show Author</mat-checkbox>
+
     </div>
   </div>
  
@@ -78,4 +80,6 @@
        class='alert alert-danger'>
     Error: {{ errorMessage }}
   </div>
-  © 2022 Main MK, Inc.
+  <div *ngIf="showCopyRightsInfo">
+    © 2022 Main MK, Inc. Developed by CJ
+  </div>
