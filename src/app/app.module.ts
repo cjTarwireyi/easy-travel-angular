@@ -15,6 +15,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserModule } from './user/user.module';
 import { MessageModule } from './messages/message.module';
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 
 
@@ -39,7 +41,8 @@ import { StoreModule } from '@ngrx/store';
       InMemoryDataService, 
       { dataEncapsulation: false, delay:1000}
     ),
-    StoreModule.forRoot({}, {})
+    StoreModule.forRoot({}, {}),
+    StoreDevtoolsModule.instrument({ name:'Easy Travel Devtools', maxAge: 25, logOnly: environment.production })
   ],
 
   providers: [],
