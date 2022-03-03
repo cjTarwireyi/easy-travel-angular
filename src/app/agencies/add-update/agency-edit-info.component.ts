@@ -18,7 +18,7 @@ export class AgencyEditInfoComponent implements OnInit {
   availableValueChange($event: { checked: boolean; }) {
     if(this.agency)
     this.agency.available= $event.checked;
-}
+  }
 
   ngOnInit(): void {
     this.route?.parent?.data.subscribe(data => {

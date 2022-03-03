@@ -17,6 +17,7 @@ import { MessageModule } from './messages/message.module';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
 
 
 
@@ -42,7 +43,8 @@ import { environment } from '../environments/environment';
       { dataEncapsulation: false, delay:1000}
     ),
     StoreModule.forRoot({}, {}),
-    StoreDevtoolsModule.instrument({ name:'Easy Travel Devtools', maxAge: 25, logOnly: environment.production })
+    StoreDevtoolsModule.instrument({ name:'Easy Travel Devtools', maxAge: 25, logOnly: environment.production }),
+    EffectsModule.forRoot([])
   ],
 
   providers: [],

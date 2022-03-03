@@ -11,6 +11,7 @@ export class AgencyDetailComponent implements OnInit {
   pageTitle: string = "Agency Details";
   agency:IAgency | undefined ;
   errorMessage:  string = '';
+
   constructor(private route:ActivatedRoute, private router:Router) { }
 
   ngOnInit(): void {
@@ -21,7 +22,8 @@ export class AgencyDetailComponent implements OnInit {
     this.errorMessage = resolvedData.error;
     this.agency = resolvedData.agency;
   }
-onBack(): void{
-  this.router.navigate(['/agencies'])
-}
+
+  onBack(): void{
+    this.router.navigate(['/agencies'])
+  }
 }

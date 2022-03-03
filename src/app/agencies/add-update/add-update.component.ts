@@ -9,6 +9,7 @@ import { AgencyService } from '../agency.service';
   styleUrls: ['./add-update.component.scss']
 })
 export class AddUpdateComponent implements OnInit {
+  
   pageTitle: string = "Add Agency";
   errorMessage:string="";
   agency:IAgency | undefined  = <IAgency> {};
@@ -30,10 +31,10 @@ export class AddUpdateComponent implements OnInit {
      
     }) 
   }
+
   resolveAgency(){
   
   }
-
 
   onSave(){
     if (this.agency) {
@@ -47,10 +48,12 @@ export class AddUpdateComponent implements OnInit {
     
     }
   }
-onDelete(){
-  if(this.agency)
-  this.agencyService.deleteHero(this.agency.id).subscribe(() => this.onCancel())
-}
+
+  onDelete(){
+    if(this.agency)
+    this.agencyService.deleteHero(this.agency.id).subscribe(() => this.onCancel())
+  }
+
   onCancel(): void{
     this.router.navigate(['/agencies'])
   }

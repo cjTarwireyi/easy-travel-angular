@@ -1,3 +1,5 @@
+import { AgencyEffects } from './state/agency.effects';
+import { EffectsModule } from '@ngrx/effects';
 import { NgModule } from '@angular/core';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 
@@ -25,6 +27,7 @@ import { agencyReducer } from './state/agency.reducer';
     MatCheckboxModule,    
     SharedModule ,
     StoreModule.forFeature("agencies",agencyReducer),
+    EffectsModule.forFeature([AgencyEffects]),
     RouterModule.forChild([     
         { path: '', component: AgencyListComponent},
         { path: ':id', component: AgencyDetailComponent, resolve: {resolvedData: AgencyResolver}},

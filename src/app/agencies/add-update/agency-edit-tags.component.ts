@@ -8,6 +8,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './agency-edit-tags.component.html'
 })
 export class AgencyEditTagsComponent implements OnInit {
+  
   errorMessage: string;
   newTags = '';
   agency: IAgency;

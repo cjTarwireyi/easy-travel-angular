@@ -1,6 +1,6 @@
-import { HttpClient, HttpErrorResponse,HttpHeaders  } from "@angular/common/http";
+import { HttpClient, HttpHeaders  } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable, of, throwError } from "rxjs";
+import { Observable, of } from "rxjs";
 import {catchError, tap,map} from "rxjs/operators"
 import { IAgency } from "./agency-list.interface";
 
