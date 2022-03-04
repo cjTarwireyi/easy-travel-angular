@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { IAgency, IAgencyResolved } from '../agency-list.interface';
 import { AgencyService } from '../agency.service';
+import { IState } from '../state/agency.reducer';
+import * as AgencyAction from "../state/agency.action";
 
 @Component({
   selector: 'pm-add-update',
@@ -12,9 +15,9 @@ export class AddUpdateComponent implements OnInit {
   
   pageTitle: string = "Add Agency";
   errorMessage:string="";
-  agency:IAgency | undefined  = <IAgency> {};
+  agency:IAgency  = <IAgency> {};
   
-  constructor(private agencyService: AgencyService, private route:ActivatedRoute,private router:Router) { }
+  constructor(private agencyService: AgencyService, private route:ActivatedRoute, private router:Router, private store: Store<IState>) { }
 
   ngOnInit(): void {
   
@@ -24,11 +27,11 @@ export class AddUpdateComponent implements OnInit {
       if(resolvedData.agency){
         this.pageTitle =  "Update Agency";
         this.agency = resolvedData.agency;
+        this.store.dispatch(AgencyAction.setCurrentAgency({currentAgencyId: this.agency.id}));
       }else{
         this.agency = <IAgency> {}; 
         this.pageTitle ="Add Agency";
-      }
-     
+      }     
     }) 
   }
 
@@ -39,8 +42,9 @@ export class AddUpdateComponent implements OnInit {
   onSave(){
     if (this.agency) {
       if(this.agency.id > 0){
-        this.agencyService.update(this.agency)
-        .subscribe(() => this.onCancel());
+        if(this.agency)
+        this.store.dispatch(AgencyAction.updateAgency({agency:this.agency}));
+        this.onCancel()
       }else{
         this.agencyService.add(this.agency)
         .subscribe(() => this.onCancel());
