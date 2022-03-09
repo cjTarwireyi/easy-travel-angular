@@ -24,7 +24,7 @@ const initialState: IAgencyState = {
 //Selectors are used top read data from the store
 //*************************************************************************************************
 
-//creating a feature selector returns a feature slice of state
+//creating a feature selector returns a feature slice of state, we are not exporting it so that it is used only within this file
 const getAgencyFeatureSelector = createFeatureSelector<IAgencyState>("agencies");
 
 //selector for currentAgencyID
