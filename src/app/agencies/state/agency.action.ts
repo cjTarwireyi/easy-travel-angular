@@ -1,7 +1,10 @@
 import { IAgency } from './../agency-list.interface';
 import { createAction, props } from "@ngrx/store";
+//*************************************************************************************************
+//Actions are dispatched by the user 
+//*************************************************************************************************
 
-export const AuthorToggleAction = createAction('[Agency] Toggle App Author');
+export const ShowCopyRightsAction = createAction('[Agency] Toggle App Author');
 
 export const LoadAgencies = createAction('[Agency] Load');
 
