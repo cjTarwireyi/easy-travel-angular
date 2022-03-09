@@ -6,7 +6,6 @@ import { Store } from "@ngrx/store";
 import { Observable, Subscription } from "rxjs";
 import { IAgency } from "./agency-list.interface";
 import { AgencyService } from "./agency.service";
-import { AuthorToggleAction } from "./state/agency.action";
 import { getAgencies, getShowCopyRightsInfo, IState } from "./state/agency.reducer";
 import * as AgencyAction from "./state/agency.action";
 
@@ -71,7 +70,7 @@ export class AgencyListComponent implements OnInit,OnDestroy, AfterViewInit {
     }
 
     onShowAuthor(): void {
-        this.store.dispatch(AgencyAction.AuthorToggleAction());
+        this.store.dispatch(AgencyAction.ShowCopyRightsAction());
     }
 
     ngOnInit(): void { 

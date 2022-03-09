@@ -1,32 +1,39 @@
 import { createFeatureSelector, createReducer ,createSelector,on} from "@ngrx/store";
-import * as AppState from '../../state/app.state';
-import * as AgencyAction from "./agency.action";
+import * as AppState from '../../state/app.state';//* imports all exported members of app state
+import * as AgencyAction from "./agency.action";// * imports all exported members of agency.action
 import { IAgency } from "../agency-list.interface";
-import { normalizePassiveListenerOptions } from "@angular/cdk/platform";
 
-export interface IState extends AppState.IState{
+export interface IState extends AppState.IState{//extending the global state here to include agency feature state, since this feature state is lazy loaded
     agencies: IAgencyState
 }
-
+//State interface to enforce strong typing
 export interface IAgencyState{
     currentAgencyId: number|null,
     showCopyRightsInfo: boolean;
     agencies: IAgency[];
 }
 
+//Initial state defined as constant to make sure it is never changed
 const initialState: IAgencyState = {
     currentAgencyId:  null,
     showCopyRightsInfo: true,
     agencies:[]
 }
 
+//*************************************************************************************************
+//Selectors are used top read data from the store
+//*************************************************************************************************
+
+//creating a feature selector returns a feature slice of state
 const getAgencyFeatureSelector = createFeatureSelector<IAgencyState>("agencies");
 
+//selector for currentAgencyID
 export const getCurrentAgencyId = createSelector (
     getAgencyFeatureSelector,
     state => state.currentAgencyId
     );
 
+//selector for current agency
     export const getCurrentAgency = createSelector (
         getAgencyFeatureSelector,
         getCurrentAgencyId,
@@ -41,26 +48,33 @@ export const getCurrentAgencyId = createSelector (
             }
         }
         );
-
+//selector for showCopyRightsInfo toggle
 export const getShowCopyRightsInfo = createSelector(
     getAgencyFeatureSelector,
     state => state.showCopyRightsInfo
 );
 
+//selector for get all agencies
 export const getAgencies = createSelector(
     getAgencyFeatureSelector,
     state => state.agencies
   );
 
+
+//*************************************************************************************************
+//Reducers are used to process actions, They listen to actions dispatched by the user usin on function
+//*************************************************************************************************
+  
+//Reducer for agency state
 export const agencyReducer = createReducer<IAgencyState>(
     initialState,
-    on(AgencyAction.AuthorToggleAction, (state):IAgencyState => {
+    on(AgencyAction.ShowCopyRightsAction, (state):IAgencyState => {//watches for the ShowCopyRightsAction
         return{
             ...state,
             showCopyRightsInfo: !state.showCopyRightsInfo
         }       
     }),
-    on(AgencyAction.LoadAgencySuccess, (state, action): IAgencyState => {
+    on(AgencyAction.LoadAgencySuccess, (state, action): IAgencyState => {// watches for LoadAgencySuccess action
         return{
             ...state,
             agencies: action.agencies
