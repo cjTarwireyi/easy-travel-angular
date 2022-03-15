@@ -1,7 +1,11 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NavigationEnd, Router, Event } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { filter } from 'rxjs/operators';
+import { IState } from '../state/app.state';
 import { AuthService } from '../user/auth.service';
+import { getLoggedInUserSelector } from '../user/state/user.reducer';
+import * as UserAction from "../user/state/user.action";
 
 @Component({
   selector: 'pm-toolbar',
@@ -12,14 +16,17 @@ export class ToolbarComponent implements OnInit {
   @Output() toggleSidenav = new EventEmitter<void>();
   hideloginButton: boolean;
   isLoggedIn: boolean;
-
-  constructor(private router:Router, private authService: AuthService) { 
+  loggedInUserName: string;
+  constructor(private router:Router, private authService: AuthService, private store: Store<IState>) { 
     this.router.events.subscribe((event:Event) => {
       if(event instanceof NavigationEnd ){
         if(event.url ===  "/login"){
           this.hideloginButton = true;
         }else{
           this.hideloginButton = false;
+          this.store.select(getLoggedInUserSelector).subscribe(
+            loggedInUserName => this.loggedInUserName = loggedInUserName
+        );
         }
       }
       this.isLoggedIn = authService.isLoggedIn;
@@ -32,11 +39,12 @@ export class ToolbarComponent implements OnInit {
     
   }
   onLogout(): void {
+    this.store.dispatch(UserAction.loggedInUser({username: ""}));
     this.authService.logout();
     this.router.navigateByUrl('/home');
   }
-  ngOnInit(): void {
-
+  ngOnInit(): void {  
+ 
   }
 
 }

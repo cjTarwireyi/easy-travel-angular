@@ -23,8 +23,7 @@ export class AgencyListComponent implements OnInit,OnDestroy, AfterViewInit {
     imageMargin: number = 2;
     showLogo: boolean = true;
     sub!: Subscription;
-    showCopyRightsInfo: boolean;
-    private _agencyService;
+    showCopyRightsInfo: boolean;    
     displayedColumns:string[] = ['agencyName', 'agencyCode', 'available', 'industry','starRating','edit']
     dataSource = new MatTableDataSource<IAgency>();    
     filteredAgencies: IAgency[] =[]
@@ -33,8 +32,8 @@ export class AgencyListComponent implements OnInit,OnDestroy, AfterViewInit {
     private _listFilter: string='';
     agencies$: Observable<IAgency[]>;
 
-    constructor(private agencyService: AgencyService, private store: Store<IState>){
-        this._agencyService = agencyService
+    constructor( private store: Store<IState>){
+       
     }
 
     ngAfterViewInit(): void {

@@ -55,7 +55,7 @@ export class AddUpdateComponent implements OnInit {
 
   onDelete(){
     if(this.agency)
-    this.agencyService.deleteHero(this.agency.id).subscribe(() => this.onCancel())
+    this.agencyService.deleteAgency(this.agency.id).subscribe(() => this.onCancel())
   }
 
   onCancel(): void{
