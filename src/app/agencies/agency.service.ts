@@ -46,7 +46,7 @@ export class AgencyService{
         );
     }
 
-    deleteHero(id: number): Observable<IAgency> {
+    deleteAgency(id: number): Observable<IAgency> {
       const url = `${this.agencyUrl}/${id}`;
     
       return this.http.delete<IAgency>(url, this.httpOptions).pipe(
