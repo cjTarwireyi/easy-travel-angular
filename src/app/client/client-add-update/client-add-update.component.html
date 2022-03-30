@@ -1,0 +1,4 @@
+<form (ngSubmit)="submit()" #customerForm="ngForm" class="customer-form" novalidate>
+<input type="text" name="firstName" [(ngModel)]="client.firstName" #lastName="ngModel">
+<button type="submit">Save</button>
+</form>

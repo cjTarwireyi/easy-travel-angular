@@ -18,6 +18,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
+import { ClientModule } from './client/client.module';
 
 
 
@@ -26,10 +27,11 @@ import { EffectsModule } from '@ngrx/effects';
     AppComponent ,
     SidenavComponent,
     ToolbarComponent,
-    MainContentComponent, 
+    MainContentComponent
   ],
   imports: [     
     UserModule,
+    ClientModule,
     AppRoutingModule, 
     SharedModule,
     HomeModule,
